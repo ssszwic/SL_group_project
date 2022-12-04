@@ -12,10 +12,8 @@ def analysis_image(img_dirs, save_dir, step=10, print_info=True):
     png_list = []
     jpg_list = []
     for img_dir in img_dirs:
-        print(img_dir)
         png_list += glob.glob(img_dir + '*.png')
         jpg_list += glob.glob(img_dir + '*.jpeg') + glob.glob(img_dir + '*.jpg') + glob.glob(img_dir + '*.jpe')
-        print(len(jpg_list))
     
     img_list = png_list + jpg_list
     img_num = len(img_list)
