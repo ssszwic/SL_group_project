@@ -11,5 +11,6 @@
 ```shell
 SL_group_project
 ├── project                     # 课题组开源项目
-└── script                      # 常用脚本
+├── script                      # 常用脚本
+└── tutorials                   # 教程
 ```
