@@ -49,7 +49,7 @@
 - Start
     注意要将label_dict包含在双引号内
     ``` python
-    # 分析 /home/data0/images 中的图片，结果保存在 /home/out 下
+    # 将/home/user/Work/Dataset/VisDrone/VisDrone2019-DET-train/labels_src中的label根据label_dict进行替换，将替换后的label放在/home/user/Work/Dataset/VisDrone/VisDrone2019-DET-train/labels下
     python label_replace.py \
         --label_dict "{2:-1, 3:2, 4:3, 5:-1, 6:-1, 7:-1, 8:-1, 9:4}" \
         --label_dir /home/user/Work/Dataset/VisDrone/VisDrone2019-DET-train/labels_src \
