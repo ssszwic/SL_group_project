@@ -28,7 +28,7 @@ def analysis_image(img_dirs, save_dir, hist=True):
     for img_dir in img_dirs:
         png_list += glob.glob(img_dir + '*.png')
         jpg_list += glob.glob(img_dir + '*.jpeg') + glob.glob(img_dir + '*.jpg') + glob.glob(img_dir + '*.jpe')
-    
+    法
     img_list = png_list + jpg_list
     img_num = len(img_list)
 
