@@ -55,26 +55,42 @@ def analysis_image(img_dirs, save_dir, step=10, print_info=True):
         print('min_area: ', min_area)
         print('max_area: ', max_area)
 
-    plt.figure(1)
-    plt.hist(height_np, bins=int((max_height - min_height) / step))
-    plt.xlabel("pixel")
-    plt.ylabel("number")
-    plt.title("height")
-    plt.savefig(save_dir + 'height_hist.svg')
+    bins = int((max_height - min_height) / step)
+    if(bins == 0):
+        print("Error: plot height histogram failure: step too large!")
+        print('min height: ', min_height, 'max height: ', max_height, 'step: ', step)
+    else:
+        plt.figure(1)
+        plt.hist(height_np, bins=bins)
+        plt.xlabel("pixel")
+        plt.ylabel("number")
+        plt.title("height")
+        plt.savefig(save_dir + 'height_hist.svg')
 
-    plt.figure(2)
-    plt.hist(width_np, bins=int((max_width - min_width) / step))
-    plt.xlabel("pixel")
-    plt.ylabel("number")
-    plt.title("width")
-    plt.savefig(save_dir + 'width_hist.svg')
+    bins = int((max_width - min_width) / step)
+    if(bins == 0):
+        print("Error: plot width histogram failure: step too large!")
+        print('min width: ', min_width, 'max width: ', max_width, 'step: ', step)
+    else:
+        plt.figure(2)
+        plt.hist(width_np, bins=bins)
+        plt.xlabel("pixel")
+        plt.ylabel("number")
+        plt.title("width")
+        plt.savefig(save_dir + 'width_hist.svg')
 
-    plt.figure(3)
-    plt.hist(area_np, bins=int((max_area - min_area) / pow(step, 4)))
-    plt.xlabel("pixel^2")
-    plt.ylabel("number")
-    plt.title("area")
-    plt.savefig(save_dir + 'area_hist.svg')
+    
+    bins = int((max_area - min_area) / pow(step, 4))
+    if(bins == 0):
+        print("Error: plot area histogram failure: step too large!")
+        print('min area:', min_area, 'max area:', max_area, 'step:', pow(step, 4))
+    else:
+        plt.figure(3)
+        plt.hist(area_np, bins=bins)
+        plt.xlabel("pixel^2")
+        plt.ylabel("number")
+        plt.title("area")
+        plt.savefig(save_dir + 'area_hist.svg')
 
     print('save image at ' + save_dir)
     return min_width, max_width, min_height, max_height
@@ -104,7 +120,3 @@ if __name__ == '__main__':
 
     assert args.step > 0
     analysis_image(dirs, save_dir, step=args.step)
-
-    
-    
-    
