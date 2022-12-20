@@ -141,11 +141,13 @@ yolov5默认只绘制所有目标的整体map，可以添加相应的代码绘�
 +           ap = np.empty(shape=(len(aps), aps[0].shape[0]))
 +           for j in range(len(aps)):
 +               ap[j] = aps[j][:, i].T
-+           ap = ap.T+
++           ap = ap.T
 +           px = np.array(list(range(len(aps))))
 +           for j, y in enumerate(ap):
 +               axes[i].plot(px, y, linewidth=1, label=f'{names[j]}')  # plot(confidence, metric)+
 +           y = smooth(ap.mean(0), 0.05)
++           # 'smooth' may change length of array
++           px = np.array(list(range(y.shape[0])))
 +           axes[i].plot(px, y, linewidth=3, color='blue', label='all classes')
 +           axes[i].set_xlabel(xlabel)
 +           axes[i].set_ylabel(ylabel)
